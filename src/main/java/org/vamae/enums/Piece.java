@@ -1,4 +1,4 @@
-package org.vamae;
+package org.vamae.enums;
 
 public enum Piece {
     PLAYER_1,
