@@ -6,9 +6,9 @@ import org.vamae.enums.Piece;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class GameBoard {
     private final List<List<Piece>> columns;
-    @Getter
     private final int rows;
 
     public GameBoard(int columns, int rows) {
@@ -19,7 +19,7 @@ public class GameBoard {
         this.rows = rows;
     }
 
-    public int getColumns() {
+    public int getColumnsCount() {
         return columns.size();
     }
 }
