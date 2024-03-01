@@ -13,6 +13,17 @@ public class Game {
     }
 
     private boolean checkLine(int startX, int startY, int endX, int endY, Piece player) {
+        for(int i = 0; i < (gameBoardController.getGameBoard().getColumnsCount() + 1) / 2; i++) {
+            int checkedX = startX + (endX * i);
+            int checkedY = startY + (endY * i);
+
+            if(!gameBoardController.isInBoard(checkedX, checkedY)) {
+                return false;
+            }
+            else if(player != gameBoardController.getCell(checkedX, checkedY)) {
+                return false;
+            }
+        }
         return true;
     }
 
