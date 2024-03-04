@@ -69,7 +69,7 @@ public class Connect4 {
      */
     private boolean checkWin(int x, int y, Piece player) {
         int piecesForWinCount = (gameBoardController.getGameBoard().getColumnsCount() + 1) / 2;
-        if (checkLine(x, y, 0, 1, player)) {
+        if (checkLine(x, y, 0, -1, player)) {
             return true;
         }
 
