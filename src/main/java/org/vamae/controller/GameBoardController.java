@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.vamae.entity.GameBoard;
 import org.vamae.enums.Piece;
+import org.vamae.exceptions.PieceOutOfBoardException;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class GameBoardController {
             }
         }
         else {
-            return null; //TODO: implement exception throwing
+            throw new PieceOutOfBoardException("Piece is out of board!");
         }
     }
 }
