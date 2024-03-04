@@ -8,8 +8,8 @@ public class Game {
     private GameBoardController gameBoardController;
     private int betSum;
 
-    public void move(int x, Piece player) {
-
+    public boolean move(int x, Piece player) {
+        return checkWin(x, gameBoardController.getGameBoard().getColumnsCount() - 1, player);
     }
 
     private boolean checkLine(int startX, int startY, int endX, int endY, Piece player) {
@@ -28,6 +28,24 @@ public class Game {
     }
 
     private boolean checkWin(int x, int y, Piece player) {
-        return true;
+        int piecesForWinCount = (gameBoardController.getGameBoard().getColumnsCount() + 1) / 2;
+        if (checkLine(x, y, 0, 1, player)) {
+            return true;
+        }
+
+        for(int offset = 0; offset < piecesForWinCount; offset++) {
+            if(checkLine(x - (piecesForWinCount - 1) + offset, y, 1, 0, player)) {
+                return true;
+            }
+
+            if(checkLine(x - (piecesForWinCount - 1) + offset, y + (piecesForWinCount - 1) - offset, 1, -1, player)) {
+                return true;
+            }
+
+            if(checkLine(x - (piecesForWinCount - 1) + offset, y - (piecesForWinCount - 1) + offset, 1, 1, player)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
