@@ -6,6 +6,9 @@ import org.vamae.enums.Piece;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that represents game board
+ */
 @Getter
 public class GameBoard {
     private final List<List<Piece>> columns;
@@ -19,6 +22,10 @@ public class GameBoard {
         this.rows = rows;
     }
 
+    /**
+     * Getter for columns count
+     * @return count of columns
+     */
     public int getColumnsCount() {
         return columns.size();
     }
