@@ -2,6 +2,9 @@ package org.vamae.controller;
 
 import lombok.AllArgsConstructor;
 import org.vamae.enums.Piece;
+import org.vamae.exceptions.PieceOutOfBoardException;
+
+import java.util.List;
 
 /**
  * The controller for game
@@ -15,9 +18,22 @@ public class Connect4 {
      * @param x index of column in which player want to drop a piece
      * @param player player, who moves
      * @return true if player win, otherwise false
+     * @throws PieceOutOfBoardException if piece is out of bound
+     * @throws IllegalArgumentException if column is full
      */
     public boolean move(int x, Piece player) {
-        return checkWin(x, gameBoardController.getGameBoard().getColumnsCount() - 1, player);
+        if(gameBoardController.isInBoard(x, 0)) {
+            List<Piece> column = gameBoardController.getGameBoard().getColumns().get(x);
+
+            if (column.size() >= gameBoardController.getGameBoard().getRows()) {
+                throw new IllegalArgumentException("That column is full");
+            }
+
+            column.add(player);
+
+            return checkWin(x, column.size() - 1, player);
+        }
+        throw new PieceOutOfBoardException("Piece is out of board!");
     }
 
     /**
