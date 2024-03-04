@@ -9,7 +9,6 @@ import org.vamae.enums.Piece;
 @AllArgsConstructor
 public class Connect4 {
     private GameBoardController gameBoardController;
-    private int betSum;
 
     /**
      * Method for making a move
