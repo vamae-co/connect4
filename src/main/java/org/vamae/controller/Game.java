@@ -8,8 +8,8 @@ public class Game {
     private GameBoardController gameBoardController;
     private int betSum;
 
-    public void move(int x, Piece player) {
-
+    public boolean move(int x, Piece player) {
+        return checkWin(x, gameBoardController.getGameBoard().getColumnsCount() - 1, player);
     }
 
     private boolean checkLine(int startX, int startY, int endX, int endY, Piece player) {
