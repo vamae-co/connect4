@@ -1,6 +1,7 @@
 package org.vamae.controller;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.vamae.entity.GameBoard;
 import org.vamae.enums.Piece;
 
@@ -8,9 +9,10 @@ import java.util.List;
 
 @AllArgsConstructor
 public class GameBoardController {
+    @Getter
     private GameBoard gameBoard;
 
-    private boolean isInBoard(int x, int y) {
+    public boolean isInBoard(int x, int y) {
         return (x >= 0 && x < gameBoard.getColumnsCount()) && (y >= 0 && y < gameBoard.getRows());
     }
 
